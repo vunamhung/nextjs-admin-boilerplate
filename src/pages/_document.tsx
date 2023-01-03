@@ -9,10 +9,7 @@ export default class CustomDocument extends Document {
 
     return {
       ...initialProps,
-      styles: [
-        initialProps.styles,
-        <ServerStyles html={initialProps.html} server={stylesServer} key="styles" />,
-      ],
+      styles: [initialProps.styles, <ServerStyles html={initialProps.html} server={stylesServer} key="styles" />],
     };
   }
   render() {
