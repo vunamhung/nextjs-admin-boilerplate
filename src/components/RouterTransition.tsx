@@ -3,22 +3,22 @@ import { useRouter } from 'next/router';
 import { startNavigationProgress, completeNavigationProgress, NavigationProgress } from '@mantine/nprogress';
 
 export function RouterTransition() {
-  const router = useRouter();
+  const { asPath, events } = useRouter();
 
   useEffect(() => {
-    const handleStart = (url: string) => url !== router.asPath && startNavigationProgress();
+    const handleStart = (url: string) => url !== asPath && startNavigationProgress();
     const handleComplete = () => completeNavigationProgress();
 
-    router.events.on('routeChangeStart', handleStart);
-    router.events.on('routeChangeComplete', handleComplete);
-    router.events.on('routeChangeError', handleComplete);
+    events.on('routeChangeStart', handleStart);
+    events.on('routeChangeComplete', handleComplete);
+    events.on('routeChangeError', handleComplete);
 
     return () => {
-      router.events.off('routeChangeStart', handleStart);
-      router.events.off('routeChangeComplete', handleComplete);
-      router.events.off('routeChangeError', handleComplete);
+      events.off('routeChangeStart', handleStart);
+      events.off('routeChangeComplete', handleComplete);
+      events.off('routeChangeError', handleComplete);
     };
-  }, [router.asPath]);
+  }, [asPath]);
 
   return <NavigationProgress autoReset={true} />;
 }
