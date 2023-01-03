@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { AppShell, Header, MantineProvider, Navbar } from '@mantine/core';
-
+import { MainLinks, RouterTransition } from '@/components';
 import '@/assets/css/style.css';
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -20,11 +20,12 @@ export default function App({ Component, pageProps }: AppProps) {
           colorScheme: 'light',
         }}
       >
+        <RouterTransition />
         <AppShell
           padding="md"
           navbar={
-            <Navbar width={{ base: 200 }} p="xs">
-              {/* Navbar content */}
+            <Navbar width={{ base: 250 }} p="xs">
+              <MainLinks />
             </Navbar>
           }
           header={

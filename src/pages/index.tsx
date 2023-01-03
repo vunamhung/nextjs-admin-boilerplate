@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Dashboard</title>
       </Head>
       <div className="container">
         <Button variant="gradient">Next</Button>
