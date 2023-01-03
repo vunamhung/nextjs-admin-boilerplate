@@ -8,8 +8,6 @@ export default function Home() {
         <title>Home</title>
       </Head>
       <div className="container">
-        <img className="h-8" src="/images/logo.svg" />
-        <br />
         <Button variant="gradient">Next</Button>
       </div>
     </>
