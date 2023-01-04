@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:analyze": "cross-env ANALYZE=true next build",
+    "build:analyze": "ANALYZE=true next build",
     "start": "next start",
     "export": "next export",
     "clean": "rimraf .next out",
@@ -58,7 +58,6 @@
     "@types/nprogress": "^0.2.0",
     "@types/ramda": "^0.28.15",
     "@types/react": "^18.0.21",
-    "cross-env": "7.0.3",
     "eslint": "^8.24.0",
     "eslint-config-next": "^13.0.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",

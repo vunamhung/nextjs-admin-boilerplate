@@ -8,7 +8,7 @@ module.exports = {
   content: ['./src/**/*.{html,tsx}'],
   theme: {
     fontFamily: {
-      sans: ['Jost', 'Helvetica Neue', ...fontFamily.sans],
+      sans: ['Helvetica Neue', ...fontFamily.sans],
       body: fontFamily.sans,
     },
     gridAutoFit: {

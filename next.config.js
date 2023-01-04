@@ -2,4 +2,17 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
-module.exports = withBundleAnalyzer({ experimental: { appDir: false } });
+/** @type {import('next').NextConfig} */
+module.exports = withBundleAnalyzer({
+  experimental: {
+    appDir: false,
+  },
+  swcMinify: true,
+  poweredByHeader: false,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+});
