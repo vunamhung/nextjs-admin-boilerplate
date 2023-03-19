@@ -1,4 +1,5 @@
 export * from './http';
+export * from './config/mantine';
 
 export function convertType(value: string) {
   const maps: { [index: string]: any } = { NaN, null: null, undefined, Infinity, '-Infinity': -Infinity };
