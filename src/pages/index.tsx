@@ -1,15 +1,5 @@
-import Head from 'next/head';
-import { Button } from '@mantine/core';
+import { Wrapper } from '@/components';
 
-export default function Home() {
-  return (
-    <>
-      <Head>
-        <title>Dashboard</title>
-      </Head>
-      <div className="container">
-        <Button variant="gradient">Next</Button>
-      </div>
-    </>
-  );
+export default function Dashboard() {
+  return <Wrapper title="Dashboard">Dashboard page</Wrapper>;
 }

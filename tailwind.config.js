@@ -4,13 +4,8 @@ const colors = require('tailwindcss/colors');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  mode: 'jit',
-  content: ['./src/**/*.tsx'],
+  content: ['./src/**/*.{html,tsx}'],
   theme: {
-    fontFamily: {
-      sans: ['Helvetica Neue', ...fontFamily.sans],
-      body: fontFamily.sans,
-    },
     gridAutoFit: {
       1: spacing[1],
       7: spacing[7],
@@ -101,6 +96,5 @@ module.exports = {
       );
     }),
     require('@tailwindcss/typography'),
-    require('@tailwindcss/line-clamp'),
   ],
 };
