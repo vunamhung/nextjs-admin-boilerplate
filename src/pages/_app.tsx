@@ -4,8 +4,10 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { AppShell, MantineProvider } from '@mantine/core';
 import { RouterTransition, Sidebar } from '@/components';
+import { fetcher } from '@/hooks/fetch';
 import { config, mantineTheme } from '@/utilities';
 import { Toaster } from 'react-hot-toast';
+import { SWRConfig } from 'swr';
 import '@/assets/css/style.css';
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -19,20 +21,22 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>{config.app.name}</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
-      <MantineProvider withGlobalStyles withNormalizeCSS theme={mantineTheme}>
-        <RouterTransition />
-        {['/login', '/forgot-password', '/reset-password', '/signup-confirm', '/organizations'].includes(pathname) ? (
-          <>
-            <Toaster position="top-right" toastOptions={toastOptions} />
-            <Component {...pageProps} />
-          </>
-        ) : (
-          <AppShell padding="md" navbar={<Sidebar />} styles={(theme) => ({ main: { backgroundColor: theme.colors.gray[0] } })}>
-            <Toaster position="top-right" toastOptions={toastOptions} />
-            <Component {...pageProps} />
-          </AppShell>
-        )}
-      </MantineProvider>
+      <SWRConfig value={{ fetcher, revalidateOnReconnect: true, errorRetryCount: 2 }}>
+        <MantineProvider withGlobalStyles withNormalizeCSS theme={mantineTheme}>
+          <RouterTransition />
+          {['/login', '/forgot-password', '/reset-password', '/signup-confirm', '/organizations'].includes(pathname) ? (
+            <>
+              <Toaster position="top-right" toastOptions={toastOptions} />
+              <Component {...pageProps} />
+            </>
+          ) : (
+            <AppShell padding="md" navbar={<Sidebar />} styles={(theme) => ({ main: { backgroundColor: theme.colors.gray[0] } })}>
+              <Toaster position="top-right" toastOptions={toastOptions} />
+              <Component {...pageProps} />
+            </AppShell>
+          )}
+        </MantineProvider>
+      </SWRConfig>
     </>
   );
 }

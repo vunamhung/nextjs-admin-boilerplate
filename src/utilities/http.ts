@@ -3,9 +3,7 @@ import axios, { AxiosError } from 'axios';
 import { getCookie } from 'cookies-next';
 import toast from 'react-hot-toast';
 
-const http = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
-});
+const http = axios.create({ baseURL: process.env.NEXT_PUBLIC_API_URL });
 const http2 = axios.create({ baseURL: process.env.NEXT_PUBLIC_API_URL });
 
 http.interceptors.request.use(
