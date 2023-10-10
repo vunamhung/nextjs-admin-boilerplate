@@ -4,7 +4,6 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { AppShell, MantineProvider } from '@mantine/core';
 import { RouterTransition, Sidebar } from '@/components';
-import { fetcher } from '@/hooks/fetch';
 import { config, mantineTheme } from '@/utilities';
 import { Toaster } from 'react-hot-toast';
 import { SWRConfig } from 'swr';
@@ -21,7 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>{config.app.name}</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
-      <SWRConfig value={{ fetcher, revalidateOnReconnect: true, errorRetryCount: 2 }}>
+      <SWRConfig value={{ revalidateOnReconnect: true, errorRetryCount: 2 }}>
         <MantineProvider withGlobalStyles withNormalizeCSS theme={mantineTheme}>
           <RouterTransition />
           {['/login', '/forgot-password', '/reset-password', '/signup-confirm', '/organizations'].includes(pathname) ? (
